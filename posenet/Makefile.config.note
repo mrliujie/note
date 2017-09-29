@@ -1,0 +1,5 @@
+1.查找python路径 os.path
+python -m site
+
+2.查找Python.h
+locate Python.h

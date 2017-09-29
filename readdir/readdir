@@ -1,0 +1,43 @@
+ DIR* dir = opendir(argv[2]);
+    string output_path = argv[3];
+    char& ref_output = output_path.back();
+    if ( ref_output != '/')
+    {
+        output_path += '/';
+    }
+
+    if (!dir) 
+    {
+        perror("opendir");
+        exit(1);
+    }
+    struct dirent* entry; 
+    printf("Directory contents:\n");
+    
+    vector<string> paths;
+    string tmp_pre_path(argv[2]);
+    char& refStr = tmp_pre_path.back();
+    if ( refStr != '/')
+    {
+        tmp_pre_path += '/';
+    }
+
+    while ( (entry = readdir(dir)) != NULL) 
+    {
+        if (entry->d_name[0] != '.' && entry->d_name[strlen(entry->d_name)-1] != '~')
+        {
+            printf("%s\n", entry->d_name);
+
+            string tmp_path(entry->d_name);
+            string final_path = tmp_pre_path + tmp_path;
+            cout << "path " << final_path << endl;           
+            paths.push_back(final_path);
+        }
+    }
+
+    //Add logic to verify entry is file or directory
+    if (closedir(dir) == -1)
+    {
+        perror("closedir");
+        exit(1);
+    }

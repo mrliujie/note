@@ -1,0 +1,37 @@
+2047  ./openMVG_main_SfMInit_ImageListing -i 1268/ -f 2457.6 -o ./test/
+ 2048  ls
+ 2049  ./openMVG_main_ComputeFeatures -i ./test/sfm_data.json -o ./test/
+ 2050  ./openMVG_main_ComputeMatches -i ./test/sfm_data.json -o ./test/
+ 2051  ./openMVG_main_IncrementalSfM -i ./test/sfm_data.json -m ./test/ -o ./reconstruct/
+ 2052  ./openMVG_main_ComputeSfM_DataColor -i reconstruct/sfm_data.bin -o reconstruct/color.ply
+ 2053  ./openMVG_main_ComputeStructureFromKnownPoses -i reconstruct/sfm_data.bin -m ./reconstruct/ -o reconstruct/robust.bin -f ./reconstruct/matches.f.bin
+ 2054  ls
+
+
+
+openMVG_main_IncrementalSfM -i matches/sfm_data.json -m matches/ -o reconstruct/
+
+ 2003  openMVG_main_ComputeFeatures -i matches/sfm_data.json -o matches/
+ 2004  ls
+ 2005  openMVG_main_ComputeMatches -i matches/sfm_data.json -o matches/
+ 2006  ls
+ 2007  openMVG_main_IncrementalSfM -i matches/sfm_data.json -o reconstruction
+ 2008  openMVG_main_IncrementalSfM -i matches/sfm_data.json -o matches/
+ 2009  openMVG_main_IncrementalSfM -i matches/sfm_data.json -m matches/ -o reconstruntion
+
+
+openMVG_main_SfMInit_ImageListing -i . -f 2457.6 -o matches/
+
+openMVG_main_ComputeFeatures -i matches/sfm_data.json  -o matches/
+
+openMVG_main_ComputeMatches -i matches/sfm_data.json -o matches/
+
+openMVG_main_IncrementalSfM -i matches/sfm_data.json -m matches/ -o reconstruction
+
+openMVG_main_SfMInit_ImageListing -i . -f 2457.6 -o output/
+
+openMVG_main_ComputeFeatures -i output/sfm_data.json  -o output/ -n 4
+
+openMVG_main_ComputeMatches -i output/sfm_data.json -o output/
+
+openMVG_main_IncrementalSfM -i output/sfm_data.json -m output/ -o reconstruction

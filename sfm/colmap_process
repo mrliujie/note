@@ -1,0 +1,25 @@
+./feature_extractor --database_path ~/test3/input/database.db --image_path ~/test3/input/ --image_list_path ~/test3/input/out.txt
+
+./src/exe/vocab_tree_matcher \
+    --database_path ~/test3/input/database.db \
+    --VocabTreeMatching.vocab_tree_path ~/liu/vocab-tree.bin \
+    --VocabTreeMatching.match_list_path /path/to/image-list.txt
+
+
+./vocab_tree_matcher --database_path ~/test3/input/database.db --VocabTreeMatching.vocab_tree_path ~/liu/vocab_tree-1048576.bin --VocabTreeMatching.match_list_path ~/test3/input/out.txt
+
+
+    ./src/exe/image_registrator \
+    --database_path ~/test3/input/database.db \
+    --image_path ~/test3/input \
+    --import_path /path/to/existing-model \
+    --export_path /path/to/model-with-new-images
+
+
+    ./feature_extractor --database ~/test_colmap/test.db --image_path ~/test_colmap/new/ --image_list_path ~/test_colmap/new/out.txt
+
+    ./src/exe/image_registrator \
+    --database_path ~/test_colmap/test.db \
+    --image_path /images \
+    --import_path /path/to/existing-model \
+    --export_path /path/to/model-with-new-images
