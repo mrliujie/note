@@ -1,0 +1,1 @@
+MSER(Maximally Stable Extremal Regions)是一種 blob feature detection, 演算法是Matas 等人在2002發表的論文, 原理是在灰階的影像中, 取一個臨界灰階值讓影像二值化, 臨界值從0~255遞增, 或是從255~0遞減, 二值化的過程中會發現一些變化值變化很小, 甚至沒有變化區域, 這些穩定的區間就被稱為最大穩定區間.

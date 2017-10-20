@@ -1,0 +1,10 @@
+ls -1 *.png | xargs -n 1 bash -c 'convert "$0" "${0%.png}.jpg"'
+    -1 – 告诉 ls 每行列出一个图像名称的选项标识
+    -n – 指定最多参数个数，例子中为 1
+    -c – 指示 bash 运行给定的命令
+    ${0%.png}.jpg – 设置新转换的图像文件的名字，% 符号用来删除源文件的扩展名
+https://linux.cn/article-8014-1.html
+
+
+
+bash -c 'for image in *.bmp; do convert "$image" "${image%.bmp}.jpg"; echo “image $image converted to ${image%.bmp}.jpg ”; done'
